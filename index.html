@@ -53,6 +53,12 @@
   .hb-subnav-label{font-family:var(--font-cond);font-weight:700;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
   .hb-subnav-select{width:100%;max-width:420px;border:1px solid var(--hairline);background:#fff;color:var(--ink);font-family:var(--font-cond);font-weight:600;font-size:15px;letter-spacing:.04em;text-transform:uppercase;padding:11px 38px 11px 14px;border-radius:0}
 
+  .hb-quicknav{position:fixed;right:20px;bottom:20px;z-index:90;display:flex;align-items:center;gap:8px;max-width:calc(100vw - 32px);background:rgba(255,255,255,.97);border:1px solid var(--hairline);box-shadow:var(--shadow-md);padding:8px}
+  .hb-quicknav-select{width:220px;max-width:52vw;border:1px solid var(--hairline);background:#fff;color:var(--ink);font-family:var(--font-cond);font-weight:600;font-size:13px;letter-spacing:.04em;text-transform:uppercase;padding:10px 34px 10px 12px;border-radius:0}
+  .hb-quicknav-button{border:0;background:var(--spark-red);color:#fff;font-family:var(--font-cond);font-weight:700;font-size:13px;letter-spacing:.08em;text-transform:uppercase;padding:11px 15px;cursor:pointer;border-radius:999px}
+  .hb-quicknav-button:hover{background:var(--spark-red-press)}
+  .hb-quicknav-button:active{transform:scale(.97)}
+
   /* ---------- hero ---------- */
   .hb-hero{position:relative;min-height:560px;display:flex;align-items:flex-end;
     background-image:linear-gradient(to bottom,rgba(20,20,20,.18),rgba(20,20,20,.72)),url(img/hero.jpg);
@@ -181,6 +187,7 @@
     .hb-agree{padding:28px 24px}
     .hb-table{font-size:14px}
     .hb-table th,.hb-table td{padding:11px 12px}
+    .hb-footer{padding-bottom:112px}
   }
 
   @media (max-width:640px){
@@ -200,6 +207,9 @@
     .hb-hero p{font-size:18px}
     .hb-table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch}
     .hb-table th,.hb-table td{min-width:128px;white-space:normal}
+    .hb-quicknav{left:12px;right:12px;bottom:12px;display:grid;grid-template-columns:minmax(0,1fr) auto;max-width:none;padding:8px}
+    .hb-quicknav-select{width:100%;max-width:none;font-size:13px}
+    .hb-quicknav-button{padding:11px 14px}
   }
 </style>
 </head>
@@ -254,6 +264,25 @@
     </div>
   </nav>
 </header>
+
+<div class="hb-quicknav" aria-label="Quick handbook navigation">
+  <select class="hb-quicknav-select" id="hb-quick-section-select" aria-label="Jump to handbook section">
+    <option value="top">Top</option>
+    <option value="welcome">Welcome</option>
+    <option value="connect">Communication</option>
+    <option value="operations">Daily Operations</option>
+    <option value="academics">Academics</option>
+    <option value="attendance">Attendance</option>
+    <option value="culture">Culture</option>
+    <option value="support">Support &amp; MTSS</option>
+    <option value="conduct">Conduct &amp; Dress</option>
+    <option value="conduct-code">Code of Conduct</option>
+    <option value="health">Health &amp; Safety</option>
+    <option value="calendar">Calendar</option>
+    <option value="forms">Forms &amp; Agreements</option>
+  </select>
+  <button class="hb-quicknav-button" id="hb-top-button" type="button">Top</button>
+</div>
 
 <!-- ============ HERO ============ -->
 <section class="hb-hero" id="top">
@@ -1087,14 +1116,40 @@
   (function(){
     var links = Array.prototype.slice.call(document.querySelectorAll('.hb-subnav a'));
     var select = document.getElementById('hb-section-select');
+    var quickSelect = document.getElementById('hb-quick-section-select');
+    var topButton = document.getElementById('hb-top-button');
     var map = {};
     links.forEach(function(a){ var id=a.getAttribute('href').slice(1); var el=document.getElementById(id); if(el) map[id]=a; });
+    function jumpTo(id){
+      var el = document.getElementById(id);
+      if(el){
+        el.scrollIntoView();
+        history.replaceState(null, '', '#' + id);
+      }
+    }
+    function syncSelects(id){
+      if(select && select.querySelector('option[value="' + id + '"]')){ select.value = id; }
+      if(quickSelect && quickSelect.querySelector('option[value="' + id + '"]')){ quickSelect.value = id; }
+    }
     if(select){
       select.addEventListener('change', function(){
-        var el = document.getElementById(select.value);
+        jumpTo(select.value);
+        syncSelects(select.value);
+      });
+    }
+    if(quickSelect){
+      quickSelect.addEventListener('change', function(){
+        jumpTo(quickSelect.value);
+        syncSelects(quickSelect.value);
+      });
+    }
+    if(topButton){
+      topButton.addEventListener('click', function(){
+        var el = document.getElementById('top');
         if(el){
           el.scrollIntoView();
-          history.replaceState(null, '', '#' + select.value);
+          history.replaceState(null, '', '#top');
+          syncSelects('top');
         }
       });
     }
@@ -1102,7 +1157,7 @@
       entries.forEach(function(e){
         if(e.isIntersecting){
           links.forEach(function(l){ l.classList.remove('is-active'); });
-          if(select){ select.value = e.target.id; }
+          syncSelects(e.target.id);
           var a = map[e.target.id]; if(a){ a.classList.add('is-active');
             var nav = document.getElementById('subnav');
             if(nav){ nav.scrollLeft = a.offsetLeft - nav.clientWidth/2 + a.clientWidth/2; }
