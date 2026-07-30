@@ -330,6 +330,16 @@ a { color: var(--spark-red); text-decoration: none; }
   .hb-list li:last-child{border-bottom:0}
   .hb-list b{color:var(--ink)}
 
+  /* attendance policy */
+  .att-banner{background:var(--spark-red);color:#fff;padding:30px 34px;margin:28px 0 10px;text-align:center}
+  .att-banner .k{font-family:var(--font-cond);font-weight:600;font-size:13px;letter-spacing:.22em;text-transform:uppercase;opacity:.9;margin-bottom:10px}
+  .att-banner .b{font-family:var(--font-display);text-transform:uppercase;font-size:clamp(26px,4vw,44px);line-height:1;letter-spacing:.01em}
+  .att-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin:8px 0}
+  .att-step{background:#fff;border:1px solid var(--hairline);border-top:4px solid var(--spark-red);padding:22px 22px 24px}
+  .att-step .n{font-family:var(--font-display);font-size:34px;line-height:1;color:var(--spark-red);margin-bottom:8px}
+  .att-step h4{font-family:var(--font-cond);font-weight:700;text-transform:uppercase;letter-spacing:.03em;font-size:15px;color:var(--ink);margin:0 0 8px}
+  .att-step p{font-family:var(--font-body);font-size:14.5px;line-height:1.55;color:var(--slate);margin:0}
+
   /* values grid */
   .hb-values{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--hairline);border:1px solid var(--hairline)}
   .hb-value{background:#fff;padding:26px 24px}
@@ -385,7 +395,7 @@ a { color: var(--spark-red); text-decoration: none; }
 
   @media (max-width:900px){
     .hb-wrap{padding:0 24px}
-    .hb-grid-3,.hb-grid-2,.hb-footer .cols,.hb-photos{grid-template-columns:1fr}
+    .hb-grid-3,.hb-grid-2,.hb-footer .cols,.hb-photos,.att-steps{grid-template-columns:1fr}
     .hb-values{grid-template-columns:1fr}
     .hb-nav-badge{display:none}
     .hb-letter{padding:32px 26px}
@@ -817,16 +827,116 @@ a { color: var(--spark-red); text-decoration: none; }
     <div class="hb-eyebrow"><span class="num">05</span><span class="lbl">Attendance &amp; Chronic-Absence Supports</span></div>
     <h2 class="hb-h2">Be Here. Be On Time.</h2>
     <hr class="hb-rule">
-    <p class="hb-lead">Regular attendance is essential to student success. Students are expected to be present and on time every day; Indiana law requires school attendance for all students.</p>
+    <p class="hb-lead">Regular attendance is essential to student learning, and Indiana law requires school attendance for all students. Students are expected to attend school on time every scheduled day. When a student must be absent, families and the school work together to resolve the reason and return the student to consistent attendance.</p>
 
-    <div class="hb-grid-2">
-      <div class="hb-card-paper">
-        <h3>Absences</h3><div class="bar"></div>
-        <p>Report all absences to the main office by 9:00 AM on the day of the absence. A written note from a parent/guardian or physician is required upon return for an excused absence. Excused absences include illness, medical/dental appointments, family emergencies, and religious observances. Unexcused absences may result in academic consequences and are reported to the state; 10+ unexcused absences may result in referral to the attendance intervention team.</p>
+    <div class="att-banner">
+      <div class="k">Attendance Expectation</div>
+      <div class="b">Be Here. Be On Time. Every Day.</div>
+    </div>
+
+    <h3 class="hb-h3">What This Policy Covers</h3>
+    <p class="hb-p">This policy applies to every student enrolled at Matchbook Learning at Wendell Phillips School 63, grades K&ndash;8. It covers daily attendance, tardies, early dismissal, excused and unexcused absences, chronic absence, truancy prevention, and withdrawal, transfer, or homeschooling.</p>
+    <p class="hb-p">A student is counted present whenever they are participating in a school-directed program &mdash; including the nurse, counseling, a restorative meeting, testing, related services, or an approved school activity. Time out of the classroom for school-directed support is not recorded as an absence.</p>
+
+    <h3 class="hb-h3">Reporting an Absence &mdash; Step by Step</h3>
+    <div class="att-steps">
+      <div class="att-step"><div class="n">1</div><h4>Call by 9:00 AM</h4><p>Call the main office at (317) 226-4263 on the day of the absence or late arrival.</p></div>
+      <div class="att-step"><div class="n">2</div><h4>State the Reason</h4><p>Give the reason for the absence, and request assistance if transportation, health, or housing is involved.</p></div>
+      <div class="att-step"><div class="n">3</div><h4>Send a Note</h4><p>Send a written note on the day the student returns so the absence is coded correctly.</p></div>
+      <div class="att-step"><div class="n">4</div><h4>Confirm the Record</h4><p>Review attendance in PowerSchool and contact the office if a date appears incorrectly.</p></div>
+      <div class="att-step"><div class="n">5</div><h4>Extended Absence</h4><p>For an absence expected to last more than three days, call the office to arrange work and support.</p></div>
+      <div class="att-step"><div class="n">6</div><h4>Keep Records Current</h4><p>Keep phone numbers, email, address, and emergency contacts up to date with the office.</p></div>
+    </div>
+
+    <h3 class="hb-h3">Attendance Terms</h3>
+    <table class="hb-table">
+      <caption>ATT-02 · Attendance Terms</caption>
+      <thead><tr><th style="width:30%">Term</th><th>Definition</th></tr></thead>
+      <tbody>
+        <tr><td>Excused absence</td><td>An absence for an approved reason, with the information the school needs to confirm it.</td></tr>
+        <tr><td>Unexcused absence</td><td>An absence that does not meet an approved reason, or that could not be confirmed after the school contacted the family.</td></tr>
+        <tr><td>Chronic absence</td><td>Missing 10% or more of the school year for any reason, excused or unexcused &mdash; about 18 days.</td></tr>
+        <tr><td>Absent student</td><td>Indiana&rsquo;s truancy-prevention threshold: five unexcused absences within a ten-week period.</td></tr>
+        <tr><td>Habitual truant</td><td>Ten or more unexcused absences in one school year. Indiana law then requires the school to report.</td></tr>
+      </tbody>
+    </table>
+
+    <h3 class="hb-h3">Excused Absences</h3>
+    <p class="hb-p">The following absences are excused when the school receives sufficient information to confirm the reason. Acceptable documentation includes a parent note, a healthcare-provider note, a court or agency record, or comparable verification.</p>
+    <ul class="hb-list">
+      <li>Illness, injury, mental-health needs, medical or dental care, therapy, or recovery.</li>
+      <li>Quarantine, isolation, or another public-health direction affecting the student or household.</li>
+      <li>A death, funeral, serious illness, or emergency in the immediate family or household.</li>
+      <li>Religious observance or religious instruction.</li>
+      <li>Court appearances, legal proceedings, a foster-care placement or placement change, or another agency-directed obligation.</li>
+      <li>Housing instability, displacement, or a transportation disruption while the school coordinates support.</li>
+      <li>An approved college, career, transition, or educational activity.</li>
+      <li>Military-connected deployment, return, or family need.</li>
+      <li>Another family emergency the Head of School determines is good and sufficient cause.</li>
+    </ul>
+    <p class="hb-p">When absences become frequent or prolonged, the school may request additional information or schedule a support meeting. A documented excused absence is not reclassified as unexcused because of that review.</p>
+
+    <h3 class="hb-h3">Absences Counted as Attendance Under Indiana Law</h3>
+    <p class="hb-p">Indiana law requires the school to count the following as attendance when the law&rsquo;s requirements are met. No academic or disciplinary penalty applies, and the student completes missed work with teacher support.</p>
+    <ul class="hb-list">
+      <li>Service as a page or honoree of the Indiana General Assembly, or authorized election service.</li>
+      <li>Response to a subpoena or appearance as a witness in a court proceeding.</li>
+      <li>Qualifying military duty involving the student or the student&rsquo;s parent or guardian, and qualifying Civil Air Patrol activity.</li>
+      <li>An educationally related activity outside the classroom, approved by the school in writing.</li>
+      <li>Qualifying participation in the Indiana State Fair, or in FFA or 4-H events, within the limits Indiana law sets.</li>
+    </ul>
+
+    <h3 class="hb-h3">Tardies &amp; Early Dismissal</h3>
+    <p class="hb-p">A student is tardy after 7:35 AM and must sign in at the main office. Early dismissal is any departure before the end of the school day; a parent, guardian, or authorized adult must sign the student out at the main office. The school records the exact instructional time missed. Repeated tardiness is addressed through family conferences and the MTSS process.</p>
+
+    <h3 class="hb-h3">When Absences Add Up</h3>
+    <table class="hb-table">
+      <caption>ATT-03 · When Absences Add Up</caption>
+      <thead><tr><th style="width:24%">Attendance point</th><th>School action</th><th class="red" style="width:26%">Family action</th></tr></thead>
+      <tbody>
+        <tr><td>Any absence or tardy</td><td>The record is verified the same day, and the school contacts the family when no notice was received.</td><td>Call by 9:00 AM and send a note on the day the student returns.</td></tr>
+        <tr><td>An absence pattern develops</td><td>The attendance team contacts the family and connects available supports &mdash; transportation, health and mental-health services, housing and McKinney-Vento services, counseling, language access, and disability-related services.</td><td>Respond to school outreach and identify what support is needed.</td></tr>
+        <tr><td>Five unexcused absences in ten weeks</td><td>Indiana law requires written notice and an attendance conference. The team and family develop an Attendance Success Agreement of up to 45 instructional days with defined supports and review dates.</td><td>Attend the conference. A parent-selected representative may attend as well.</td></tr>
+        <tr><td>Ten percent of the year missed</td><td>A chronic-absence support plan is started or strengthened, with review of causes, needed services, and more frequent monitoring. This applies even when all absences are excused.</td><td>Participate in the plan and its review meetings.</td></tr>
+        <tr><td>Ten unexcused absences in the year</td><td>The student meets Indiana&rsquo;s definition of habitual truant. The school verifies the record and files the reports required by law. Family outreach and the support plan continue.</td><td>Remain in contact with the school and continue the attendance plan.</td></tr>
+      </tbody>
+    </table>
+
+    <div class="hb-callout">
+      <h4 class="hb-h4">Support for Circumstances Affecting Attendance</h4>
+      <p>Housing instability, transportation needs, medical and mental-health conditions, disability-related needs, caregiving responsibilities, foster-care circumstances, safety concerns, and language needs are addressed through the appropriate school support and community services. Families are encouraged to contact the main office so those services can be arranged.</p>
+    </div>
+
+    <h3 class="hb-h3">Students With Disabilities, Health Needs &amp; Special Circumstances</h3>
+    <p class="hb-p">For a student with an IEP, a Section 504 plan, a service plan, or a documented disability-related need, attendance support is coordinated with that team and implemented consistently with the student&rsquo;s plan. Attendance procedures are not used to delay a required evaluation, accommodation, placement, or service decision.</p>
+    <p class="hb-p">When a physical or mental-health condition is expected to prevent attendance for an extended period, the school reviews whether homebound, hospital, remote, or other instructional services apply. Documentation from a qualified healthcare provider may be requested, and medical information is kept confidential.</p>
+    <p class="hb-p">Students who are pregnant, in foster care, experiencing homelessness, or facing a severe or life-threatening illness receive the additional services and coordination required by Indiana and federal law.</p>
+
+    <h3 class="hb-h3">Make-Up Work, Grades &amp; Discipline</h3>
+    <ul class="hb-list">
+      <li>Students receive a reasonable opportunity to complete work missed during excused or legally protected absences. Teachers may set reasonable timelines or alternate assignments based on the length of the absence.</li>
+      <li>A student identified as habitually truant may have extracurricular participation limited where school eligibility rules and Indiana law allow. No restriction removes access to instruction, disability-related services, counseling, or restorative support.</li>
+    </ul>
+
+    <h3 class="hb-h3">Withdrawal, Transfer &amp; Homeschooling</h3>
+    <table class="hb-table">
+      <caption>ATT-04 · Withdrawal, Transfer &amp; Homeschooling</caption>
+      <thead><tr><th style="width:28%">Situation</th><th>Procedure</th></tr></thead>
+      <tbody>
+        <tr><td>Missed school without a withdrawal request</td><td>A student is not withdrawn solely for missing a number of days. Enrollment continues until the school confirms a valid withdrawal, transfer, or homeschool notice.</td></tr>
+        <tr><td>Withdrawal or transfer</td><td>Submit the school&rsquo;s withdrawal documentation with the reason for withdrawal, the student&rsquo;s next school, and current contact information. The school confirms the effective date and transfers records.</td></tr>
+        <tr><td>Homeschooling</td><td>Notify the school in writing. The withdrawal is processed under current Indiana requirements. An IDOE homeschool number is not required before homeschooling begins.</td></tr>
+      </tbody>
+    </table>
+
+    <div class="hb-grid-2" style="margin-top:28px;align-items:start">
+      <div class="hb-card-yellow">
+        <h3>Attendance Contact</h3>
+        <p>Call the main office at <b>(317) 226-4263</b> before 9:00 AM to report an absence, ask about an attendance record, request a meeting, or arrange support.</p>
       </div>
       <div class="hb-card-paper">
-        <h3>Tardiness &amp; Chronic Absence</h3><div class="bar"></div>
-        <p>Students arriving after 7:35 AM must sign in at the main office. Excessive tardiness is addressed through the MTSS process and parent conferences. A student is <b>chronically absent</b> when they miss 10% or more of school days — and we work actively with families to identify and remove barriers.</p>
+        <h3>Family &amp; School Agreement</h3><div class="bar"></div>
+        <p>The Attendance Agreement (ATT-01) below confirms how families and the school partner on daily arrival, absence reporting, tardies, and attendance meetings.</p>
       </div>
     </div>
 
@@ -841,6 +951,8 @@ a { color: var(--spark-red); text-decoration: none; }
         <tr><td>Keep phone numbers and emergency contacts current.</td><td>Use ParentSquare, phone, and meetings to partner with families.</td></tr>
       </tbody>
     </table>
+
+    <p class="hb-p" style="font-size:13.5px;color:var(--muted);margin-top:20px">This policy is reviewed annually and whenever Indiana law or Indiana Department of Education guidance changes. If any provision conflicts with state or federal law, the law governs. Governing authorities include IC 20-33-2, IC 20-33-2.5, IC 20-18-2, IC 20-19-3, 511 IAC 4-1.5-9, current IDOE attendance guidance, McKinney-Vento, IDEA, and Section 504.</p>
   </div>
 </section>
 
